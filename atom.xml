@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <author>
+    <name>sysuTobo</name>
+  </author>
+  <generator uri="https://hexo.io/">Hexo</generator>
+  <id>https://sysutobo.github.io/blog/</id>
+  <link href="https://sysutobo.github.io/blog/" rel="alternate"/>
+  <link href="https://sysutobo.github.io/blog/atom.xml" rel="self"/>
+  <rights>All rights reserved 2026, sysuTobo</rights>
+  <subtitle>工程笔记与杂谈</subtitle>
+  <title>sysuTobo 的博客</title>
+  <updated>2026-11-26T07:35:30.260Z</updated>
+  <entry>
+    <author>
+      <name>sysuTobo</name>
+    </author>
+    <category term="随笔" scheme="https://sysutobo.github.io/blog/categories/%E9%9A%8F%E7%AC%94/"/>
+    <category term="GitHub Pages" scheme="https://sysutobo.github.io/blog/tags/GitHub-Pages/"/>
+    <category term="博客" scheme="https://sysutobo.github.io/blog/tags/%E5%8D%9A%E5%AE%A2/"/>
+    <content>
+      <![CDATA[<p>用 Hexo + NexT 在这台机器上搭了个静态博客，托管在 GitHub Pages。</p><span id="more"></span><p>首页按日期倒序列出文章，<code>Archives</code> 按年月归档，<code>Categories</code> &#x2F; <code>Tags</code> 自动聚合，RSS 在 <code>/atom.xml</code>。</p><p>写新文章的流程：</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/work/blog</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$HOME</span>/work/.node/bin:<span class="variable">$PATH</span></span><br><span class="line">npx hexo new <span class="string">&quot;文章标题&quot;</span></span><br><span class="line"><span class="variable">$EDITOR</span> <span class="built_in">source</span>/_posts/2026-11-26-文章标题.md</span><br><span class="line">npx hexo server        <span class="comment"># 本地预览 http://localhost:4000/blog/</span></span><br></pre></td></tr></table></figure><p>发布：</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm run deploy         <span class="comment"># clean + generate，然后 push 到 gh-pages 分支</span></span><br></pre></td></tr></table></figure><p>文章开头用 front matter 填 <code>title</code> &#x2F; <code>date</code> &#x2F; <code>categories</code> &#x2F; <code>tags</code>；<code>&lt;!-- more --&gt;</code> 以上是首页摘要。草稿用 <code>hexo new draft</code>，确认后 <code>hexo publish</code>。</p>]]>
+    </content>
+    <id>https://sysutobo.github.io/blog/2026/11/26/hello-world/</id>
+    <link href="https://sysutobo.github.io/blog/2026/11/26/hello-world/"/>
+    <published>2026-11-26T07:40:00.000Z</published>
+    <summary>
+      <![CDATA[<p>用 Hexo + NexT 在这台机器上搭了个静态博客，托管在 GitHub Pages。</p>]]>
+    </summary>
+    <title>开博客了</title>
+    <updated>2026-11-26T07:35:30.260Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>sysuTobo</name>
+    </author>
+    <category term="技术" scheme="https://sysutobo.github.io/blog/categories/%E6%8A%80%E6%9C%AF/"/>
+    <category term="GitHub Pages" scheme="https://sysutobo.github.io/blog/tags/GitHub-Pages/"/>
+    <category term="Hexo" scheme="https://sysutobo.github.io/blog/tags/Hexo/"/>
+    <content>
+      <![CDATA[<p>记录一下这套站点的发布方式，免得以后忘了。</p><span id="more"></span><h2 id="两种站点形态"><a href="#两种站点形态" class="headerlink" title="两种站点形态"></a>两种站点形态</h2><ul><li>仓库名 <code>sysuTobo.github.io</code> → 根站点，地址 <code>https://sysutobo.github.io/</code>，<code>_config.yml</code> 里 <code>root: /</code></li><li>任意仓库名（这里是 <code>blog</code>）→ 项目站点，地址 <code>https://sysutobo.github.io/blog/</code>，<code>root: /blog/</code></li></ul><p>现在用的是后者，仓库里 <code>_config.yml</code> 的 <code>url</code> &#x2F; <code>root</code> 已按 <code>/blog/</code> 配好。</p><h2 id="发布"><a href="#发布" class="headerlink" title="发布"></a>发布</h2><p>构建产物不提交到 <code>main</code>，而是由 <code>hexo-deployer-git</code> 推到 <code>gh-pages</code> 分支：</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm run deploy</span><br></pre></td></tr></table></figure><p>GitHub 仓库 Settings → Pages → Source 选 <code>Deploy from a branch</code>，分支 <code>gh-pages</code>、目录 <code>/ (root)</code>。</p><h2 id="自定义域名"><a href="#自定义域名" class="headerlink" title="自定义域名"></a>自定义域名</h2><p>仓库根目录放一个 <code>CNAME</code> 文件，内容是域名；再到 DNS 加一条 CNAME 指向 <code>sysutobo.github.io</code>。HTTPS 证书由 GitHub 自动签发。</p>]]>
+    </content>
+    <id>https://sysutobo.github.io/blog/2026/11/20/github-pages-deploy/</id>
+    <link href="https://sysutobo.github.io/blog/2026/11/20/github-pages-deploy/"/>
+    <published>2026-11-20T13:00:00.000Z</published>
+    <summary>
+      <![CDATA[<p>记录一下这套站点的发布方式，免得以后忘了。</p>]]>
+    </summary>
+    <title>GitHub Pages 部署备忘</title>
+    <updated>2026-11-26T07:35:30.399Z</updated>
+  </entry>
+</feed>
